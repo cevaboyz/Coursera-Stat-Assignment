@@ -30,7 +30,7 @@ library(ggplot2)
 library(ggpubr)
 library(tidyr)
 library(stringr)
-
+library(dplyr)
 
 data("ToothGrowth")
 
@@ -70,4 +70,12 @@ plot2 <- quickplot(dose, len, data = ToothGrowth, colour=supp)
 
 plot2
 
+plot3 <- ggplot(ToothGrowth, aes(x=len,fill=supp)) +geom_bar(alpha=.5)
 
+plot3
+
+quicksummary <-ToothGrowth %>% group_by(supp) %>% summarize(count = n())
+
+orangejuice <- ToothGrowth %>% filter(supp == "OJ")
+
+ascorbicacid <- ToothGrowth %>% filter(supp == "VC")

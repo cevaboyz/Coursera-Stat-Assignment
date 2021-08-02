@@ -66,3 +66,8 @@ plot1 <- ggplot(ToothGrowth, aes(x=len, y=dose, fill=supp)) +geom_bar(alpha=.5, 
 
 plot1
 
+plot2 <- quickplot(dose, len, data = ToothGrowth, colour=supp)
+
+plot2
+
+

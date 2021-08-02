@@ -17,8 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Overview 
 
-## The Tooth Growth data set contains information about an experiment regarding odontoblasts cells in 
-## 60 guinea pigs
+### The Tooth Growth data set contains information about an experiment regarding odontoblasts cells in 60 guinea pigs
  
 _The response is the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs._
 _Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day)_
@@ -31,6 +30,17 @@ data("ToothGrowth")
 
 head(ToothGrowth)
 
+tail(ToothGrowth)
+
 str(ToothGrowth)
 
 ```
+
+_Tooth Growth is  data frame with 60 observations on 3 variables.
+
+ 1. len  _numeric_	 *Tooth length*
+ 2. supp _factor_	   *Supplement type (VC or OJ)*
+ 3. dose _numeric_	 *Dose in milligrams/day*
+
+_Source_
+_C. I. Bliss (1952). The Statistics of Bioessay. Academic Press._

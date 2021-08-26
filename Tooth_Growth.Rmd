@@ -40,6 +40,8 @@ tail(ToothGrowth)
 
 str(ToothGrowth)
 
+
+
 ```
 
 _Tooth Growth is  data frame with 60 observations on 3 variables._
@@ -59,12 +61,30 @@ _Crampton, E. W. (1947). The growth of the odontoblast of the incisor teeth as a
 
 # 1.2 Exploratory Data Analysis 
 
+_Our first step is to take a glance at our dataset and use the function *summary* to check what are the main characteristics of our two data points: Length of the Teeth Growth (*len*) and the amount of Dose subministrated to the 60 Guinea Pigs (*dose*).
+
+We can see that the Mean of Tooth Growth is *18.81*
+
+We also proceed to check if our lengths follow a normal distribution with one of the many check available in the *normtest* ( _https://cran.r-project.org/web/packages/normtest/normtest.pdf_ ) package, in our case we opt for the _*Shapiro-Wilk normality test*_
+
+In this test, we need to evaluate the p-value, if it's higher than *> 0.05* or variable is *normally distributed*
+
+In our case its p-value is **0.1091** which is greater than **0.05**.
+
+Our variable is normally distributed with a slight left swkew.
+
 ```{r Initial Graphics and Distribution}
 
-# Overlaid histograms with means
-plot1 <- ggplot(ToothGrowth, aes(x=len, y=dose, fill=supp)) +geom_bar(alpha=.5, stat = "identity")
+summary(ToothGrowth)
 
-plot1
+shapiro.test(ToothGrowth$len)
+
+hist(ToothGrowth$len, main = "Distribution of Tooth Length in the Guinea Pig Tooth Growth Experiment", xlab = "Length", ylab = "Frequency", border = "green", col = "yellow", las =1)
+
+# Overlaid histograms with means
+#plot1 <- ggplot(ToothGrowth, aes(x=len, y=dose, fill=supp)) +geom_bar(alpha=.5, stat = "identity")
+
+#plot1 this graph is wrong, the y axis is wrong
 
 plot2 <- quickplot(dose, len, data = ToothGrowth, colour=supp)
 
@@ -79,3 +99,6 @@ quicksummary <-ToothGrowth %>% group_by(supp) %>% summarize(count = n())
 orangejuice <- ToothGrowth %>% filter(supp == "OJ")
 
 ascorbicacid <- ToothGrowth %>% filter(supp == "VC")
+
+
+

@@ -45,3 +45,41 @@ print(mean(means_of_simulation_exponential_apply))
 print(mean_of_exponential_distribution)
 
 #the sample mean is almost identical to the mean of the theoretical distribution
+
+
+
+
+
+## Sample Variance vs Theoretical Variance 
+
+tVar <- (1/lambda)^2 / number_of_exponentials
+
+tVar
+
+sVar <- round(var(means_of_simulation_exponential_apply),3)
+
+sVar
+
+
+##Distribution
+##Need to Show that the distribution is approximately normal 
+
+
+
+
+mean_distribution <- 1 / lambda
+
+sd_distribution <- (1/lambda)/sqrt(number_of_exponentials)
+
+
+hist(means_of_simulation_exponential_apply, breaks = 100 , col = "red", main = "Is the Distribution Normal?", xlab = "Means of the Exponential Simulation")
+
+xfit <- seq(min(means_of_simulation_exponential_apply), max(means_of_simulation_exponential_apply), length = 100)
+
+yfit <- dnorm(xfit, mean = mean_distribution, sd = sd_distribution)
+
+lines(xfit, yfit*50, col= "green", lwd = 4)
+
+
+
+
